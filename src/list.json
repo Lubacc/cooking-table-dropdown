@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Broccoli",
+    "timeToCook": "10 - 15 minutes"
+  },
+  {
+    "id": 2,
+    "name": "Beans",
+    "timeToCook": "40 - 45 minutes"
+  },
+  {
+    "id": 3,
+    "name": "Lentils",
+    "timeToCook": "40 - 45 minutes"
+  },
+  {
+    "id": 4,
+    "name": "Potatoes",
+    "timeToCook": "35 - 40 minutes"
+  },
+  {
+    "id": 5,
+    "name": "White rice",
+    "timeToCook": "10 - 15 minutes"
+  },
+  {
+    "id": 6,
+    "name": "Brown rice",
+    "timeToCook": "40 - 45 minutes"
+  },
+  {
+    "id": 7,
+    "name": "Kale",
+    "timeToCook": "5 - 10 minutes"
+  },
+  {
+    "id": 8,
+    "name": "Eggs",
+    "timeToCook": "3 - 5 minutes"
+  }
+]
