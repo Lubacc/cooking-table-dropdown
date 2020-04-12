@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
-import FoodList from '../list.json';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
+import { useFetch } from './useFetch';
 
 export default function AutoComplete() {
   const [timeToCook, setTimeToCook] = useState('');
-
-  const onChange = (event, value) => {
-    FoodList.forEach((item) => {
-      if (item.name === value) {
-        setTimeToCook(item.timeToCook);
-      }
-    });
-  };
+  const url = 'http://localhost:3004/foodNames';
+  const { data } = useFetch(url);
+  console.log(data);
+  // const onChange = (event, value) => {
+  //   if (value !== '') {
+  //     FoodList.forEach((item) => {
+  //       if (item.name === value) {
+  //         setTimeToCook(item.timeToCook);
+  //       }
+  //     });
+  //   }
+  // };
   return (
     <>
       <Typography variant="overline" color="inherit">
@@ -23,8 +27,8 @@ export default function AutoComplete() {
         freeSolo
         id="free-solo-2-demo"
         disableClearable
-        options={FoodList.map((option) => option.name)}
-        onChange={onChange}
+        //options={typeof(data) !== 'undefined'? data.map((option) => option.name) : }
+        //onInputChange={onChange}
         renderInput={(params) => (
           <TextField
             {...params}
