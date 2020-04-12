@@ -3,22 +3,17 @@ import axios from 'axios';
 
 export const useFetch = (url) => {
   const [data, setData] = useState([]);
-
-  async function getDataFromApi(url) {
-    try {
-      await axios.get(url).then((res) =>
-        setData({
-          data: res.data,
-        })
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
+  const [error, setError] = useState(null);
   useEffect(() => {
-    getDataFromApi(url);
-  }, [url]);
-
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(url);
+        setData(res);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    fetchData();
+  }, []);
   return data;
 };
