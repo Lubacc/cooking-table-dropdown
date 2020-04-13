@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
@@ -7,8 +7,9 @@ import { useFetch } from './useFetch';
 export default function AutoComplete() {
   const [timeToCook, setTimeToCook] = useState('');
   const url = 'http://localhost:3004/foodNames';
-  const { data } = useFetch(url);
-  console.log(data);
+  const { data, isLoading = true } = useFetch(url);
+  const names = !isLoading && data.map((item) => item.name);
+  console.log(names);
   // const onChange = (event, value) => {
   //   if (value !== '') {
   //     FoodList.forEach((item) => {
