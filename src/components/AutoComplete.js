@@ -2,23 +2,25 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
-import { useFetch } from './useFetch';
+import useFetch from './useFetch';
 
 export default function AutoComplete() {
   const [timeToCook, setTimeToCook] = useState('');
   const url = 'http://localhost:3004/foodNames';
-  const { data, isLoading = true } = useFetch(url);
-  const names = !isLoading && data.map((item) => item.name);
-  console.log(names);
-  // const onChange = (event, value) => {
-  //   if (value !== '') {
-  //     FoodList.forEach((item) => {
-  //       if (item.name === value) {
-  //         setTimeToCook(item.timeToCook);
-  //       }
-  //     });
-  //   }
-  // };
+
+  const { data } = useFetch(url);
+  const optionsList =
+    data && data.length > 0 && data.map((option) => option.name);
+  console.log(optionsList);
+  const onChange = (event, value) => {
+    if (value !== '') {
+      data.forEach((item) => {
+        if (item.name === value) {
+          setTimeToCook(item.timeToCook);
+        }
+      });
+    }
+  };
   return (
     <>
       <Typography variant="overline" color="inherit">
@@ -26,10 +28,9 @@ export default function AutoComplete() {
       </Typography>
       <Autocomplete
         freeSolo
-        id="free-solo-2-demo"
         disableClearable
-        //options={typeof(data) !== 'undefined'? data.map((option) => option.name) : }
-        //onInputChange={onChange}
+        options={optionsList}
+        onInputChange={onChange}
         renderInput={(params) => (
           <TextField
             {...params}
