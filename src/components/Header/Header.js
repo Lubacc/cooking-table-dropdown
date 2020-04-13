@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Box } from '@material-ui/core';
 
 export default (Header) => (
-  <AppBar position="static">
+  <AppBar data-test="appBar" position="static">
     <Toolbar>
       <Box
         display="flex"
