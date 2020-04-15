@@ -3,12 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Typography from '@material-ui/core/Typography';
 import useFetch from './useFetch';
+require('dotenv').config({ path: '../../.env.development' });
 
 export default function AutoComplete() {
   const [timeToCook, setTimeToCook] = useState('');
-  const url = 'http://localhost:3004/foodNames';
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log(API_URL);
 
-  const { data } = useFetch(url);
+  const { data } = useFetch(API_URL);
   const optionsList =
     data && data.length > 0 && data.map((option) => option.name);
   console.log(optionsList);
